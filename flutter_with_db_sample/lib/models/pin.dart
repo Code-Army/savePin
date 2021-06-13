@@ -38,10 +38,44 @@ class Pin {
         .catchError((e) => print(e));
   }
 
+static Future<void>updatePins({
+    String name,
+    String pin,
+    String username,
+    String docId,
+  })async{
+    DocumentReference documentReferencer = _mainCollection.doc(userUid).collection('pins').doc(docId);
+
+    Map<String, dynamic> data = <String, dynamic>{
+      'name': name,
+      'pin': pin,
+      'username': username,
+    };
+
+    await documentReferencer
+        .update(data)
+        .whenComplete(() => print("Pin updated to database"))
+        .catchError((e)=> print(e));
+  }
+
   //method to retrieve items from the db
   static Stream<QuerySnapshot> retrievePins() {
     CollectionReference pinCollection =
         _mainCollection.doc(userUid).collection('pins');
     return pinCollection.snapshots();
   }
+
+
+  static Future<void> deletePin({
+    String docId,
+  })async{
+    DocumentReference documentReferencer =
+    _mainCollection.doc(userUid).collection('pins').doc(docId);
+
+    await documentReferencer
+        .delete()
+        .whenComplete(() => print('Pin Deleted from database'))
+        .catchError((e)=> print(e));
+  }
+
 }

@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_with_db_sample/models/pin.dart';
 
+import 'UpdatePin.dart';
+
 /**
  * class to retrive all the pins in the db
  */
@@ -204,12 +206,26 @@ class PinList extends StatelessWidget {
                         itemBuilder: (context, index) {
                           var pinInfo = snapshot.data.docs[index].data();
                           String category = pins[index]["type"];
+			                    String docId = pins[index].id;
+                          String name = pins[index]["name"];
+                          String username = pins[index]["username"];
+                          String pin = pins[index]["pin"];
 
                           return Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: Card(
                               child: ListTile(
-                                onTap: () {},
+                                onTap: ()=>Navigator.of(context).push(
+                                MaterialPageRoute(builder: (context)=> EditScreen(
+                                  CurrentName: name,
+                                  CurrentPin: pin,
+                                  CurrentUsername: username,
+                                  CurrentType: category, 
+                                  documentId: docId,
+
+                                ))
+                                ),
+
                                 title: Text(
                                   pins[index]["name"],
                                   style: TextStyle(
