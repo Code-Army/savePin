@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "947298087337",
+    "project_id": "savepin-b253b",
+    "storage_bucket": "savepin-b253b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:947298087337:android:b989fc73bae6a38d2654b8",
+        "android_client_info": {
+          "package_name": "com.example.flutter_with_db_sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "947298087337-4sbtk57f4i8oj6p0jgh2685qujif1els.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw4aOdknEVYhPY4EbAgx9hRJ--5EQ4pCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "947298087337-4sbtk57f4i8oj6p0jgh2685qujif1els.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
