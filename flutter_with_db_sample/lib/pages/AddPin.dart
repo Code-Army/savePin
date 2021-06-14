@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_with_db_sample/models/pin.dart';
-import 'package:flutter_with_db_sample/widgets/SuccessAlert.dart';
+import 'package:cool_alert/cool_alert.dart';
 
 /**
  * class to related to add pins to the db
@@ -312,11 +312,11 @@ class _AddPinState extends State<AddPin> {
                         _controllerPin.text = "";
                         _controllerUsername.text = "";
                       });
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return SuccessAlert('Pin added Successfully');
-                          });
+                      CoolAlert.show(
+                        context: context,
+                        type: CoolAlertType.success,
+                        text: "Pin added successful!",
+                      );
                     },
                     child: Center(
                       child: Text(
