@@ -80,6 +80,7 @@ class _EditPinFormState extends State<EditPinForm> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 15.0),
+                // name
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20.0,0.0,20.0,0.0),
                   child: TextField(decoration: InputDecoration(
@@ -103,7 +104,9 @@ class _EditPinFormState extends State<EditPinForm> {
                     focusNode: widget.nameFocusNode, cursorColor: Colors.lightBlue,
                   ),
                 ),
-      Visibility(
+
+                // user name
+                Visibility(
             visible: ((_typeController.text == "1"? true:false)),
             child: Padding(
                   padding: const EdgeInsets.fromLTRB(20.0,20.0,20.0,0.0),
@@ -131,6 +134,7 @@ class _EditPinFormState extends State<EditPinForm> {
                   ),
 ),
                 SizedBox(height: 15.0),
+                // Pin
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20.0,0.0,20.0,0.0),
                   child: TextField(
@@ -187,7 +191,7 @@ class _EditPinFormState extends State<EditPinForm> {
                   setState(() {
                     _isProcessing = true;
                   });
-
+                  //pin update
                   await Pin.updatePins(
                     docId: widget.documentId,
                     name: _nameController.text,
@@ -199,7 +203,8 @@ class _EditPinFormState extends State<EditPinForm> {
                     _isProcessing = false;
                   });
                   Navigator.of(context).pop();
-                CoolAlert.show(
+                  // pin update success alert
+                  CoolAlert.show(
                   context: context,
                   type: CoolAlertType.success,
                   text: "Pin Update was successful!",
@@ -208,6 +213,7 @@ class _EditPinFormState extends State<EditPinForm> {
 
 
               child: Padding(
+                //pin update button
                 padding: EdgeInsets.only(top: 16.0, bottom: 16.0),
                 child: Text(
                   'UPDATE PIN',

@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_with_db_sample/models/pin.dart';
@@ -64,6 +63,7 @@ class _EditScreenState extends State<EditScreen>{
                bottom: 10.0,
                right: 16.0
              ),
+             //delete pin progress and delete button
              child: CircularProgressIndicator(
                valueColor: AlwaysStoppedAnimation<Color>(
                  Colors.redAccent,
@@ -81,7 +81,7 @@ class _EditScreenState extends State<EditScreen>{
                setState(() {
                  _isDeleting = true;
                });
-
+               // delete pin
                await Pin.deletePin(
                  docId: widget.documentId,
                );
@@ -91,6 +91,7 @@ class _EditScreenState extends State<EditScreen>{
                });
 
                Navigator.of(context).pop();
+               //success alert
                CoolAlert.show(
                  context: context,
                  type: CoolAlertType.success,
@@ -110,6 +111,7 @@ class _EditScreenState extends State<EditScreen>{
              bottom: 0.0,
              top: 100.0
            ),
+           //widget call edit form
            child: EditPinForm(
              documentId: widget.documentId,
              nameFocusNode: _NameFocusNode,
