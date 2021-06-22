@@ -16,16 +16,16 @@ class EditPinForm extends StatefulWidget {
   final String documentId;
 
   const EditPinForm({
-     this.nameFocusNode,
-     this.pinFocusNode,
-     this.userNameFocusNode,
-     this.typeFocusNode,
+    this.nameFocusNode,
+    this.pinFocusNode,
+    this.userNameFocusNode,
+    this.typeFocusNode,
 
-     this.CurrentName,
-     this.CurrentPin,
-     this.CurrentUserName,
-     this.CurrentType,
-     this.documentId,
+    this.CurrentName,
+    this.CurrentPin,
+    this.CurrentUserName,
+    this.CurrentType,
+    this.documentId,
   });
 
   @override
@@ -39,10 +39,10 @@ class _EditPinFormState extends State<EditPinForm> {
 
   bool _isProcessing = false;
 
-   TextEditingController _nameController;
-   TextEditingController _pinController;
-   TextEditingController _usernameController;
-   TextEditingController _typeController;
+  TextEditingController _nameController;
+  TextEditingController _pinController;
+  TextEditingController _usernameController;
+  TextEditingController _typeController;
 
   bool _isVisible = true;
 
@@ -66,12 +66,12 @@ class _EditPinFormState extends State<EditPinForm> {
     super.initState();
 
 
-    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Form(
-    key: _editPinFormKey,
+      key: _editPinFormKey,
       child: Column(
         children: [
           Padding(
@@ -82,24 +82,24 @@ class _EditPinFormState extends State<EditPinForm> {
                 SizedBox(height: 15.0),
                 // name
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20.0,0.0,20.0,0.0),
+                  padding: const EdgeInsets.fromLTRB(4.0,0.0,4.0,0.0),
                   child: TextField(decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(vertical: 15.0,horizontal: 20.0),
-                        labelText: 'Name',
-                        labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0,
-                            color: Colors.grey[700]
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(width: 2,color: Colors.indigo[900]),
-                            borderRadius: BorderRadius.circular(10)
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(width: 2,color: Colors.lightBlue),
-                            borderRadius: BorderRadius.circular(10)
-                        )
-                    ),
+                      contentPadding: EdgeInsets.symmetric(vertical: 15.0,horizontal: 20.0),
+                      labelText: 'Name',
+                      labelStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
+                          color: Colors.grey[700]
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2,color: Colors.indigo[900]),
+                          borderRadius: BorderRadius.circular(10)
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(width: 2,color: Colors.lightBlue),
+                          borderRadius: BorderRadius.circular(10)
+                      )
+                  ),
                     controller: _nameController,
                     focusNode: widget.nameFocusNode, cursorColor: Colors.lightBlue,
                   ),
@@ -107,36 +107,36 @@ class _EditPinFormState extends State<EditPinForm> {
 
                 // user name
                 Visibility(
-            visible: ((_typeController.text == "1"? true:false)),
-            child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20.0,20.0,20.0,0.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        contentPadding: EdgeInsets.symmetric(vertical: 15.0,horizontal: 20.0),
-                        labelText: 'User Name',
-                        labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0,
-                            color: Colors.grey[700]
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(width: 2,color: Colors.indigo[900]),
-                            borderRadius: BorderRadius.circular(10)
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(width: 2,color: Colors.lightBlue),
-                            borderRadius: BorderRadius.circular(10)
-                        )
+                  visible: ((_typeController.text == "1"? true:false)),
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(4.0,20.0,4.0,0.0),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(vertical: 15.0,horizontal: 20.0),
+                          labelText: 'User Name',
+                          labelStyle: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20.0,
+                              color: Colors.grey[700]
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(width: 2,color: Colors.indigo[900]),
+                              borderRadius: BorderRadius.circular(10)
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(width: 2,color: Colors.lightBlue),
+                              borderRadius: BorderRadius.circular(10)
+                          )
+                      ),
+                      controller: _usernameController,
+                      focusNode: widget.userNameFocusNode,
                     ),
-                    controller: _usernameController,
-                    focusNode: widget.userNameFocusNode,
                   ),
-                  ),
-),
+                ),
                 SizedBox(height: 15.0),
                 // Pin
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(20.0,0.0,20.0,0.0),
+                  padding: const EdgeInsets.fromLTRB(4.0,0.0,4.0,0.0),
                   child: TextField(
                     decoration: InputDecoration(
                         contentPadding: EdgeInsets.symmetric(vertical: 15.0,horizontal: 20.0),
@@ -172,49 +172,50 @@ class _EditPinFormState extends State<EditPinForm> {
             ),
           )
               : Container(
-            width: double.maxFinite,
+            height: 50.0,
             child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(
-                  Colors.lightBlue[700],
+              style: ElevatedButton.styleFrom(
+                elevation: 6.0,
+                primary: Colors.lightBlue[700],
+                shadowColor: Colors.blueAccent,
+                shape:
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+
                 ),
-                shape: MaterialStateProperty.all(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                ),
+
               ),
               onPressed: () async {
                 widget.nameFocusNode.unfocus();
                 widget.pinFocusNode.unfocus();
 
-                  setState(() {
-                    _isProcessing = true;
-                  });
-                  //pin update
-                  await Pin.updatePins(
-                    docId: widget.documentId,
-                    name: _nameController.text,
-                    pin: _pinController.text,
-                    username: _usernameController.text,
-                  );
+                setState(() {
+                  _isProcessing = true;
+                });
+                //pin update
+                await Pin.updatePins(
+                  docId: widget.documentId,
+                  name: _nameController.text,
+                  pin: _pinController.text,
+                  username: _usernameController.text,
+                );
 
-                  setState(() {
-                    _isProcessing = false;
-                  });
-                  Navigator.of(context).pop();
-                  // pin update success alert
-                  CoolAlert.show(
+                setState(() {
+                  _isProcessing = false;
+                });
+                Navigator.of(context).pop();
+                // pin update success alert
+                CoolAlert.show(
                   context: context,
                   type: CoolAlertType.success,
                   text: "Pin Update was successful!",
                 );
-                },
+              },
 
 
               child: Padding(
                 //pin update button
-                padding: EdgeInsets.only(top: 16.0, bottom: 16.0),
+                padding: EdgeInsets.only(right:110.0,left:110.0,top: 16.0, bottom: 16.0),
                 child: Text(
                   'UPDATE PIN',
                   style: TextStyle(
@@ -230,5 +231,5 @@ class _EditPinFormState extends State<EditPinForm> {
         ],
       ),
     );
-}
+  }
 }
