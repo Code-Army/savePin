@@ -190,8 +190,8 @@ class PinList extends StatelessWidget {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Center(
                           child: Container(
-                              width: 100.0,
-                              height: 100.0,
+                              width: 50.0,
+                              height: 50.0,
                               child: CircularProgressIndicator(
                                 value: 4.0,
                               )));
