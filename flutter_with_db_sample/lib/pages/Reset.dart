@@ -61,20 +61,19 @@ class _ResetState extends State<Reset> {
               children: [],
             ),
             Padding(
-              padding: EdgeInsets.all(40.0),
+              padding: EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Center(
                     child: Image(
                       image: AssetImage(
-                        'assets/security.png',
+                        'assets/login.jpg',
                       ),
-                      height: 200.0,
-                      width: 200.0,
+                      height: 250.0,
+                      width: double.infinity,
                     ),
                   ),
-                  SizedBox(height: 15.0),
                 ],
               ),
             ),
@@ -87,7 +86,7 @@ class _ResetState extends State<Reset> {
                     const SizedBox(
                       height: 10,
                     ),
-                    SizedBox(height: 50.0),
+                    SizedBox(height: 20.0),
                     Container(
                         padding: EdgeInsets.symmetric(horizontal: 18.0),
                         height: 50.0,

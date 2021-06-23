@@ -1,7 +1,13 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_with_db_sample/pages/Login.dart';
+import 'package:flutter_with_db_sample/pages/PinList.dart';
+import 'package:flutter_with_db_sample/pages/Signup.dart';
+import 'package:flutter_with_db_sample/pages/onboard.dart';
 
 /**
  * * class for splash screen
@@ -9,6 +15,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
  * https://www.youtube.com/watch?v=PKQUzwZIZqg&list=WL&index=18
  * https://www.youtube.com/watch?v=YRlJmY2yxCY&list=WL&index=18
  */
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key key}) : super(key: key);
 
@@ -17,11 +24,23 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  FirebaseAuth auth = FirebaseAuth.instance;
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5),
-        () => Navigator.pushReplacementNamed(context, '/pinList'));
+    Timer(Duration(seconds: 5), () {
+      if (auth.currentUser == null) {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => OnboardingScreen()),
+            (route) => false);
+      } else {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => PinList()),
+            (route) => false);
+      }
+    });
   }
 
   @override

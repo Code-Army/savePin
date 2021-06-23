@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 final CollectionReference _mainCollection = _firestore.collection('pins');
@@ -22,8 +23,10 @@ class Pin {
     String type,
     String username,
   }) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User user = await FirebaseAuth.instance.currentUser;
     DocumentReference documentReference =
-        _mainCollection.doc(userUid).collection('pins').doc();
+        _mainCollection.doc(user.uid).collection('pins').doc();
 
     Map<String, dynamic> data = <String, dynamic>{
       'name': name,
@@ -38,13 +41,16 @@ class Pin {
         .catchError((e) => print(e));
   }
 
-static Future<void>updatePins({
+  static Future<void> updatePins({
     String name,
     String pin,
     String username,
     String docId,
-  })async{
-    DocumentReference documentReferencer = _mainCollection.doc(userUid).collection('pins').doc(docId);
+  }) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User user = await FirebaseAuth.instance.currentUser;
+    DocumentReference documentReferencer =
+        _mainCollection.doc(user.uid).collection('pins').doc(docId);
 
     Map<String, dynamic> data = <String, dynamic>{
       'name': name,
@@ -55,7 +61,7 @@ static Future<void>updatePins({
     await documentReferencer
         .update(data)
         .whenComplete(() => print("Pin updated to database"))
-        .catchError((e)=> print(e));
+        .catchError((e) => print(e));
   }
 
   //method to retrieve items from the db
@@ -65,17 +71,17 @@ static Future<void>updatePins({
     return pinCollection.snapshots();
   }
 
-
   static Future<void> deletePin({
     String docId,
-  })async{
+  }) async {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User user = await FirebaseAuth.instance.currentUser;
     DocumentReference documentReferencer =
-    _mainCollection.doc(userUid).collection('pins').doc(docId);
+        _mainCollection.doc(user.uid).collection('pins').doc(docId);
 
     await documentReferencer
         .delete()
         .whenComplete(() => print('Pin Deleted from database'))
-        .catchError((e)=> print(e));
+        .catchError((e) => print(e));
   }
-
 }

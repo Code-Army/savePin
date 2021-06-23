@@ -167,6 +167,12 @@ class _ProfileState extends State<Profile> {
                   mobile: phoneNumber,
                   address: address,
                 );
+
+                CoolAlert.show(
+                  context: context,
+                  type: CoolAlertType.success,
+                  text: "Details Update successful!",
+                );
               }),
         ],
       );
